@@ -1,6 +1,6 @@
 from .file_management import txt_importer
 
-# from .queue import Queue
+# from queue import Queue
 
 
 def process(path_file, instance):
@@ -22,7 +22,10 @@ def process(path_file, instance):
 
 
 def remove(instance):
-    """Aqui irá sua implementação"""
+    if instance.__len__() == 0:
+        return print("Não há elementos")
+    removed_element = instance.dequeue()
+    print(f"Arquivo {removed_element['nome_do_arquivo']} removido com sucesso")
 
 
 def file_metadata(instance, position):
@@ -32,3 +35,5 @@ def file_metadata(instance, position):
 # fila01 = Queue()
 # process('news_file.txt', fila01)
 # print('FILA 01:', vars(fila01))
+# remove(fila01)
+# print('FILA APOS REMOÇÃO:', vars(fila01))
