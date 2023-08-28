@@ -1,4 +1,5 @@
 from .file_management import txt_importer
+
 # from .queue import Queue
 
 
@@ -9,6 +10,12 @@ def process(path_file, instance):
         "qtd_linhas": len(file_data),
         "linhas_do_arquivo": file_data,
     }
+
+    file = "nome_do_arquivo"
+
+    for i in range(instance.__len__()):
+        if instance.search(i)[file] == processed_text[file]:
+            return None
 
     instance.enqueue(processed_text)
     print(processed_text)
