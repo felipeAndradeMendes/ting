@@ -15,9 +15,10 @@ def txt_importer(path_file):
         print(file_not_found_error, file=sys.stderr)
 
     else:
-        list_of_news = [line.replace('\n', '') for line in data]
+        list_of_news = [line.replace("\n", "") for line in data]
         return list_of_news
 
 
-print(txt_importer("news_file.txt"))
-# print(txt_importer("news_file.csv"))
+if __name__ == "__main__":
+    print(txt_importer("news_file.txt"))
+    # print(txt_importer("news_file.csv"))
