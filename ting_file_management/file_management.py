@@ -19,6 +19,6 @@ def txt_importer(path_file):
         return list_of_news
 
 
-if __name__ == "__main__":
-    print(txt_importer("news_file.txt"))
+# if __name__ == "__main__":
+#     print(txt_importer("news_file.txt"))
     # print(txt_importer("news_file.csv"))

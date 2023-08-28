@@ -1,4 +1,5 @@
-from .file_management import txt_importer
+from ting_file_management.file_management import txt_importer
+import sys
 
 # from queue import Queue
 
@@ -29,11 +30,16 @@ def remove(instance):
 
 
 def file_metadata(instance, position):
-    """Aqui irá sua implementação"""
+    invalid_pos_error = "Posição inválida"
+
+    if position not in range(instance.__len__()):
+        return print(invalid_pos_error, file=sys.stderr)
+
+    item_searched = instance.search(int(position))
+
+    print("ITEM SEARCHED:", item_searched)
 
 
 # fila01 = Queue()
-# process('news_file.txt', fila01)
-# print('FILA 01:', vars(fila01))
-# remove(fila01)
-# print('FILA APOS REMOÇÃO:', vars(fila01))
+# process("news_file.txt", fila01)
+# print("SEARCHED:", file_metadata(fila01, 0))
