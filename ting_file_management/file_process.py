@@ -1,8 +1,6 @@
 from ting_file_management.file_management import txt_importer
 import sys
 
-# from queue import Queue
-
 
 def process(path_file, instance):
     file_data = txt_importer(path_file)
@@ -38,8 +36,3 @@ def file_metadata(instance, position):
     item_searched = instance.search(int(position))
 
     print("ITEM SEARCHED:", item_searched)
-
-
-# fila01 = Queue()
-# process("news_file.txt", fila01)
-# print("SEARCHED:", file_metadata(fila01, 0))

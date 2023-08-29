@@ -17,8 +17,3 @@ def txt_importer(path_file):
     else:
         list_of_news = [line.replace("\n", "") for line in data]
         return list_of_news
-
-
-# if __name__ == "__main__":
-#     print(txt_importer("news_file.txt"))
-    # print(txt_importer("news_file.csv"))
