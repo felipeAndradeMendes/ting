@@ -5,40 +5,27 @@
 def exists_word(word, instance):
     word_lower = word.lower()
     size = instance.__len__()
-    qtd = "qtd_linhas"
-    line = "linhas_do_arquivo"
+    qtd_lin = "qtd_linhas"
+    lin_arq = "linhas_do_arquivo"
     nom_arq = "nome_do_arquivo"
-
-    # archive_match = {
-    #     "palavra": word,
-    #     "arquivo": '',
-    #     "ocorrencias": []
-    # }
 
     returned_list = []
 
-    for i in range(size):  # percorre cada item da lista
-        print(f"PASSANDO PELO ITEM {i}", instance.search(i)[nom_arq])
+    for i in range(size):
+        item = instance.search(i)
         ocorrencias = []
-        for j in range(
-            int(instance.search(i)[qtd])
-        ):  # percorre cada linha do item
-            print(f"PASSANDO PELO linha {j}", instance.search(i)[line][j])
-            if word_lower in instance.search(i)[line][j].lower():
-                # print('MATCH!')
+        for j in range(int(item[qtd_lin])):
+            if word_lower in item[lin_arq][j].lower():
                 ocorrencias.append({"linha": j + 1})
-                # archive_match['arquivo'] = instance.search(i)[nom_arq]
-                # archive_match['ocorrencias'].append({'linha': j + 1})
-        # print('ARCHIVE MATCH:', archive_match)
         if len(ocorrencias):
             returned_list.append(
                 {
                     "palavra": word,
-                    "arquivo": instance.search(i)[nom_arq],
+                    "arquivo": item[nom_arq],
                     "ocorrencias": ocorrencias,
                 }
             )
-        print("RETURNED LIST::", returned_list)
+        print("RETURNED LIST:", returned_list)
 
     return returned_list
 
@@ -49,7 +36,33 @@ Fazer uma função somente para checar se tem, na linha, a palavra procurada
 
 
 def search_by_word(word, instance):
-    """Aqui irá sua implementação"""
+    word_lower = word.lower()
+    size = instance.__len__()
+    qtd_lin = "qtd_linhas"
+    lin_arq = "linhas_do_arquivo"
+    nom_arq = "nome_do_arquivo"
+
+    returned_list = []
+
+    for i in range(size):
+        item = instance.search(i)
+        ocorrencias = []
+        for j in range(int(item[qtd_lin])):
+            if word_lower in item[lin_arq][j].lower():
+                ocorrencias.append(
+                    {"linha": j + 1, "conteudo": item[lin_arq][j]}
+                )
+        if len(ocorrencias):
+            returned_list.append(
+                {
+                    "palavra": word,
+                    "arquivo": item[nom_arq],
+                    "ocorrencias": ocorrencias,
+                }
+            )
+        print("RETURNED LIST:", returned_list)
+
+    return returned_list
 
 
 # fila01 = Queue()
