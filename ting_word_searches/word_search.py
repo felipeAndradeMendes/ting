@@ -2,6 +2,13 @@
 # from ting_file_management.file_process import process
 
 
+def set_ocorrencias(linha, conteudo, has_conteudo):
+    if has_conteudo:
+        return {"linha": linha, "conteudo": conteudo}
+    else:
+        return {"linha": linha}
+
+
 def search_in_fila(word, instance, has_conteudo):
     word_lower = word.lower()
     size = instance.__len__()
@@ -16,12 +23,15 @@ def search_in_fila(word, instance, has_conteudo):
         ocorrencias = []
         for j in range(int(item[qtd_lin])):
             if word_lower in item[lin_arq][j].lower():
-                if has_conteudo:
-                    ocorrencias.append(
-                        {"linha": j + 1, "conteudo": item[lin_arq][j]}
-                    )
-                else:
-                    ocorrencias.append({"linha": j + 1})
+                ocorrencias.append(
+                    set_ocorrencias(j + 1, item[lin_arq][j], has_conteudo)
+                )
+                # if has_conteudo:
+                #     ocorrencias.append(
+                #         {"linha": j + 1, "conteudo": item[lin_arq][j]}
+                #     )
+                # else:
+                #     ocorrencias.append({"linha": j + 1})
         if len(ocorrencias):
             returned_list.append(
                 {
